@@ -6,7 +6,6 @@
 
 void cpuMonitor();
 void gpuMonitor();
-void appMonitor();
 
 int choice = 0;
 
@@ -14,11 +13,10 @@ int main() {
 	int quit = 0;
 	system("clear");
 	while(quit != 1) {
-		printf("[HELIX-ENGINE DEBUGGER]\n");
-		printf("1) Monitor App\n");
-		printf("2) Monitor CPU\n");
-		printf("3) Monitor GPU\n");
-		printf("4) Exit\n");
+		printf("[PERFORMANCE MONITOR]\n");
+		printf("1) Monitor CPU\n");
+		printf("2) Monitor GPU\n");
+		printf("3) Exit\n");
 		printf("\n");
 		printf("Enter an option: ");
 		choice = fgetc(stdin);
@@ -26,17 +24,13 @@ int main() {
 		switch(choice) {
 			case '1':
 				system("clear");
-				appMonitor();
+				cpuMonitor();
 				break;
 			case '2':
 				system("clear");
-				cpuMonitor();
-				break;
-			case '3':
-				system("clear");
 				gpuMonitor();
 				break;
-			case '4':
+			case '3':
 				system("clear");
 				quit = 1;
 				break;
@@ -46,11 +40,6 @@ int main() {
 		}
 	}
 	return 0;
-}
-
-void appMonitor() {
-	printf("[HELIX-ENGINE APP MONITOR]\n\n");
-	system("adb logcat HelixEngine:D *:S");
 }
 
 void cpuMonitor() {
